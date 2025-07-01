@@ -5,12 +5,10 @@ FROM eclipse-temurin:17-jdk
 WORKDIR /app
 
 # Копируем всё из текущей директории проекта
-COPY . .
+COPY .. .
 
-# Собираем проект через встроенный Maven Wrapper
+RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
-
-# Открываем порт 8080 (Spring Boot)
 EXPOSE 8080
 
 # Указываем, как запускать приложение
